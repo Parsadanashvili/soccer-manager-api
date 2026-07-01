@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Requests\Api\V1\Team;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateTeamRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['sometimes', 'required', 'string', 'max:255'],
+            'country' => ['sometimes', 'required', 'string', 'max:255'],
+        ];
+    }
+}
