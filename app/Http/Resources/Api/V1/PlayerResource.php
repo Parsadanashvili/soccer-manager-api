@@ -25,6 +25,11 @@ class PlayerResource extends JsonResource
             'age' => $this->age,
             'position' => $this->position->value,
             'market_value' => $this->market_value,
+            'team' => $this->whenLoaded('team', fn(): array => [
+                'id' => $this->team->id,
+                'name' => $this->team->name,
+                'country' => $this->team->country,
+            ]),
         ];
     }
 }
