@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('player_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('from_team_id')->nullable()->constrained('teams')->nullOnDelete();
+            $table->foreignId('to_team_id')->nullable()->constrained('teams')->nullOnDelete();
+            $table->unsignedBigInteger('price');
             $table->timestamps();
         });
     }
