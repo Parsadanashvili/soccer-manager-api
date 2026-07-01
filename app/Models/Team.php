@@ -50,7 +50,9 @@ class Team extends Model
     protected function value(): Attribute
     {
         return Attribute::make(
-            get: fn(): int => (int) $this->players->sum('market_value'),
+            get: fn(): int => $this->relationLoaded('players')
+                ? (int) $this->players->sum('market_value')
+                : (int) $this->players()->sum('market_value'),
         )->shouldCache();
     }
 }
