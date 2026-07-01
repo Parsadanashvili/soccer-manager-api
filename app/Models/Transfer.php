@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[Fillable([
+    'player_id',
+    'from_team_id',
+    'to_team_id',
+    'price',
+])]
 class Transfer extends Model
 {
     /** @use HasFactory<\Database\Factories\TransferFactory> */
     use HasFactory;
-
-    protected $fillable = [
-        'player_id',
-        'from_team_id',
-        'to_team_id',
-        'price',
-    ];
 
     protected function casts(): array
     {
