@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Player;
 use App\Models\TransferList;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +19,8 @@ class TransferListFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'player_id' => Player::factory(),
+            'asking_price' => fake()->numberBetween(1_000_000, 5_000_000),
         ];
     }
 }
